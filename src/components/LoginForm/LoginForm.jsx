@@ -5,6 +5,8 @@ const LoginForm = () => {
     const navigate = useNavigate()
     const [password, setPassword] = useState('')
     const [username, setUsername] = useState('')
+    const [errorMsg, setErrorMsg] = useState('')
+    const [errorMsgToggle, setErrorMsgToggle] = useState(false)
 
     const onChangePassword = (e) => {
         setPassword(e.target.value)
@@ -14,6 +16,10 @@ const LoginForm = () => {
     }
     const onSubmitSuccess = () => {
         navigate('/', { replace: true })
+    }
+    const onSubmitFail = (errorMsg) => {
+        setErrorMsgToggle(true)
+        setErrorMsg(errorMsg)
     }
     const submitForm = async (e) => {
         e.preventDefault()
@@ -27,6 +33,9 @@ const LoginForm = () => {
         const data = await response.json()
         if (response.ok == true) {
             onSubmitSuccess()
+        }
+        else {
+            onSubmitFail(data.error_msg)
         }
     }
 
@@ -48,6 +57,7 @@ const LoginForm = () => {
                     <input className="px-4 py-2 border rounded" value={password} onChange={onChangePassword} type="password" name="password" id="password" />
                 </div>
                 <button onClick={submitForm} className="w-full mt-2 cursor-pointer px-4 py-2 rounded text-white font-semibold bg-green-600 ">Log In</button>
+                {errorMsg && <p className="text-sm text-red-400">{errorMsg}</p>}
             </form>
         </div>
     )
