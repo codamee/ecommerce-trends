@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router"
 import { useState } from "react"
+import Cookies from "js-cookie"
 
 const LoginForm = () => {
     const navigate = useNavigate()
@@ -14,7 +15,8 @@ const LoginForm = () => {
     const onChangeUsername = (e) => {
         setUsername(e.target.value)
     }
-    const onSubmitSuccess = () => {
+    const onSubmitSuccess = (token) => {
+        Cookies.set('jwt_token', token, { expires: 30 })
         navigate('/', { replace: true })
     }
     const onSubmitFail = (errorMsg) => {
@@ -31,8 +33,9 @@ const LoginForm = () => {
         }
         const response = await fetch(url, options)
         const data = await response.json()
+        console.log(data)
         if (response.ok == true) {
-            onSubmitSuccess()
+            onSubmitSuccess(data.jwt_token)
         }
         else {
             onSubmitFail(data.error_msg)

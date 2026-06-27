@@ -1,6 +1,12 @@
 import Navbar from "../Navbar/Navbar"
+import Cookies from 'js-cookie'
+import { Navigate } from "react-router"
 
 const Home = () => {
+  const jwtToken = Cookies.get('jwt_token')
+  if (jwtToken === undefined) {
+    return <Navigate to='/login' />
+  }
   return (
     <div className="container  m-auto">
       <Navbar />

@@ -3,6 +3,7 @@ import Home from "../components/Home/Home"
 import Products from "../components/Products/Products"
 import Cart from "../components/Cart/Cart"
 import LoginForm from "../components/LoginForm/LoginForm";
+import NotFound from "../components/NotFound/NotFound";
 
 export const router = createBrowserRouter([
     {
@@ -20,5 +21,9 @@ export const router = createBrowserRouter([
     {
         path: '/login',
         element: <LoginForm />
+    },
+    {
+        path: '*',
+        element: <NotFound />
     }
 ])
