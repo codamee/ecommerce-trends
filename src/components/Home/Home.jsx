@@ -1,4 +1,3 @@
-import Navbar from "../Navbar/Navbar"
 import Cookies from 'js-cookie'
 import { Navigate } from "react-router"
 
@@ -9,7 +8,6 @@ const Home = () => {
   }
   return (
     <div className="container  m-auto">
-      <Navbar />
       <div className="flex py-20 px-10 gap-6 justify-between">
         <div className="flex w-1/2 flex-col gap-10 items-start">
           <h1 className="text-5xl font-bold text-green-700">Clothes That Gets You Noticed</h1>

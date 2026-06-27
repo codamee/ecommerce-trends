@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import './App.css'
 import LoginForm from './components/LoginForm/LoginForm'
-import {router} from './routes/routes'
+import { router } from './routes/routes'
 import { RouterProvider } from 'react-router'
 
 function App() {

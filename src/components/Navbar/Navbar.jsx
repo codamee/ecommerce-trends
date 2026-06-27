@@ -1,8 +1,13 @@
 import { Link } from "react-router"
+import Cookies from "js-cookie"
 
 const Navbar = () => {
+  const onLogOutClick = () => {
+    Cookies.remove("jwt_token")
+  }
+
   return (
-    <div className='p-10 flex items-center justify-between '>
+    <div className='p-10 flex items-center justify-between container mx-auto '>
       <div className='font-bold text-3xl w-1/2'>
         <p className='text-3xl'>&#8355;rend&#8368;</p>
       </div>
@@ -19,7 +24,7 @@ const Navbar = () => {
           </Link>
 
         </ul>
-        <button className='cursor-pointer text-white px-4 py-2 rounded bg-green-500 outline-none'>Log out</button>
+        <button onClick={onLogOutClick} className='cursor-pointer text-white px-4 py-2 rounded bg-green-500 outline-none'>Log out</button>
       </div>
     </div>
   )
