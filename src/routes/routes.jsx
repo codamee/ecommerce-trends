@@ -9,12 +9,11 @@ import Cookies from "js-cookie";
 
 const ProtectedRoute = () => {
     const jwtToken = Cookies.get('jwt_token')
-    if (jwtToken === undefined) {
-        return <Navigate to={'/login'} replace />
-    }
-    else {
-        return <Outlet />
-    }
+    return jwtToken === undefined ? <Navigate to={'/login'} replace /> : <Outlet />
+}
+const PublicRoute = () => {
+    const jwtToken = Cookies.get('jwt_token')
+    return jwtToken !== undefined ? <Navigate to={'/'} replace /> : <Outlet />
 }
 const RootLayout = () => {
     return (
@@ -57,7 +56,13 @@ export const router = createBrowserRouter([
 
     },
     {
-        path: '/login',
-        element: <LoginForm />
+
+        element: <PublicRoute />,
+        children: [
+            {
+                path: '/login',
+                element: <LoginForm />
+            }
+        ]
     },
 ])
