@@ -6,7 +6,7 @@ import { RouterProvider } from 'react-router'
 function App() {
 
   return (
-    <div className=' leading-relaxed'>
+    <div className=' leading-relaxed font-poppins'>
       <RouterProvider router={router} />
     </div>
   )

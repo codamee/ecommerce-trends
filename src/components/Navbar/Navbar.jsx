@@ -13,7 +13,7 @@ const Navbar = () => {
       <div className='font-bold text-3xl w-1/2'>
         <p className='text-3xl'>&#8355;rend&#8368;</p>
       </div>
-      <div className='flex w-1/3  font-bold justify-between items-center ' >
+      <div className='flex w-1/3 justify-between items-center ' >
         <ul className='flex justify-between items-center w-2/3'>
           <Link to='/'>
             <li className='cursor-pointer hover:border-b p-2 border border-transparent hover:border-b-black transition-all duration-500 ease-in-out'>Home</li>
@@ -26,7 +26,7 @@ const Navbar = () => {
           </Link>
 
         </ul>
-        <button onClick={onLogOutClick} className='cursor-pointer text-white px-4 py-2 rounded bg-green-500 outline-none hover:bg-green-400'>Log out</button>
+        <button onClick={onLogOutClick} className='cursor-pointer text-white px-4 py-2 rounded bg-green-500 outline-none  hover:bg-green-400'>Log out</button>
       </div>
     </div>
   )
