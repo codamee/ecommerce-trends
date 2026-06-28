@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <div className='p-10 flex items-center justify-between container mx-auto sticky top-0 bg-white'>
       <div className='font-bold text-3xl w-1/2'>
-        <p className='text-3xl'>&#8355;rend&#8368;</p>
+        <p className='text-3xl'>&#8376;rend&#8368;</p>
       </div>
       <div className='flex w-1/3 justify-between items-center ' >
         <ul className='flex justify-between items-center w-2/3'>
