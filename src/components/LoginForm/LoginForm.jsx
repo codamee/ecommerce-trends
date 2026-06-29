@@ -33,7 +33,6 @@ const LoginForm = () => {
         }
         const response = await fetch(url, options)
         const data = await response.json()
-        console.log(data)
         if (response.ok == true) {
             onSubmitSuccess(data.jwt_token)
         }
@@ -49,7 +48,7 @@ const LoginForm = () => {
             </div>
             <form onSubmit={submitForm} className="p-8 w-1/4 bg-white shadow-xl rounded-xl flex flex-col gap-3 items-center justify-center">
                 <div className='font-bold text-3xl w-1/2'>
-                    <p className='text-3xl'>&#8355;rend&#8368;</p>
+                    <p className='text-3xl'>&#8376;rend&#8368;</p>
                 </div>
                 <div className="flex flex-col gap-3 w-full">
                     <label className="text-xs font-bold" htmlFor="username">USERNAME</label>

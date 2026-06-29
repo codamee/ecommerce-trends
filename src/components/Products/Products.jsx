@@ -38,7 +38,6 @@ const Products = () => {
     }
     getProducts()
   }, [activeOptionId])
-  console.log(productList)
 
   const renderProducts = () => {
     return (

@@ -6,6 +6,7 @@ import LoginForm from "../components/LoginForm/LoginForm";
 import NotFound from "../components/NotFound/NotFound";
 import Navbar from "../components/Navbar/Navbar";
 import Cookies from "js-cookie";
+import ProductItemDetails from "../components/Products/ProductItemDetails";
 
 const ProtectedRoute = () => {
     const jwtToken = Cookies.get('jwt_token')
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
                         path: '/cart',
                         element: <Cart />
                     },
+                    {
+                        path: 'products/:id',
+                        element: <ProductItemDetails />
+                    }
                 ]
 
             }
