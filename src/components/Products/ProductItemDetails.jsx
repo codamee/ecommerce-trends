@@ -7,6 +7,15 @@ const ProductItemDetails = () => {
     const { id } = useParams()
     const [productItemDetails, setProductItemDetails] = useState({})
     const [isLoading, setIsLoading] = useState(true)
+    const [quantity, setQuantity] = useState(1)
+
+    const increaseQuantity = () => {
+        setQuantity(q => q + 1)
+    }
+    const decreaseQuantity = () => {
+        setQuantity(q => q > 1 ? q - 1 : q)
+    }
+
     useEffect(() => {
         const getProductItemDetails = async () => {
             const jwtToken = Cookies.get("jwt_token")
@@ -31,12 +40,12 @@ const ProductItemDetails = () => {
                     style: data.title,
                     reviews: data.total_reviews
                 }
-                setProductItemDetails(formattedData)
+                setProductItemDetails({ ...formattedData, quantity })
                 setIsLoading(false)
             }
         }
         getProductItemDetails()
-    }, [id])
+    }, [id,quantity])
 
 
     const { availability, brand, description, imageUrl, price, rating, style, reviews } = productItemDetails
@@ -47,7 +56,7 @@ const ProductItemDetails = () => {
                 <img className="w-120 rounded-xl" src={imageUrl} alt={style} />
                 <div className="flex flex-col p-2 justify-between items-stretch">
                     <h1 className="text-3xl font-semibold  text-green-950">{style}</h1>
-                    <p className="font-semibold text-green-700">Rs {price}/- </p>
+                    <p className="font-semibold text-green-600 text-xl">Rs {price}/- </p>
                     <div className="flex items-center gap-5">
                         <div className=" flex gap-1 items-center text-white px-2 py-1 rounded bg-green-700 outline-none">
                             <p >{rating}</p>
@@ -60,12 +69,12 @@ const ProductItemDetails = () => {
                     </div>
                     <p className="font-semibold">Available : <span className="text-gray-500"> {availability}</span></p>
                     <p className="font-semibold">Brand : <span className="text-gray-500"> {brand}</span></p><hr />
-                    <div className="flex gap-4">
-                        <button>less</button>
-                        <p>4</p>
-                        <button>More</button>
+                    <div className="flex gap-3">
+                        <button className="bg-green-200 font-semibold px-3 py-1 rounded" onClick={decreaseQuantity}> - </button>
+                        <p className=" py-1 w-10 bg-green-200 flex items-center justify-center rounded font-bold">{quantity}</p>
+                        <button className="bg-green-200 font-semibold px-3 py-1 rounded" onClick={increaseQuantity}>+</button>
                     </div>
-                    <button className="w-fit bg-green-500 px-4 py-2 rounded text-white ">Add To Cart</button>
+                    <button className="cursor-pointer w-fit bg-green-500 px-4 py-2 rounded text-white ">Add To Cart</button>
                 </div>
             </div>}
         </>
